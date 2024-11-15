@@ -8,7 +8,7 @@ from google.cloud import speech
 app = Flask(__name__)
 
 # Reemplaza con tu clave de servicio de Google Cloud
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "speechkey.json"  # Asegúrate de que la ruta sea correcta
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "Your Google API Key.json"  # Asegúrate de que la ruta sea correcta
 
 # Configurar el registro
 logging.basicConfig(level=logging.INFO)
@@ -55,7 +55,7 @@ def transcribir_audio(audio):
 def transcribir():
     """Endpoint para recibir el archivo de audio y devolver la transcripción."""
     global transcripcion_actual  # Usar la variable global para almacenar la transcripción
-    if 'audio.wav' not in request.files:
+    if 'audio.wav' not in request.files:  ## Must be same name ex 'audio.wav', from HTTP POST in flow
         logging.error("No se encontró ningún archivo de audio")
         return jsonify({'error': 'No se encontró ningún archivo de audio'}), 400
 
